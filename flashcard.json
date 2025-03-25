@@ -27,3 +27,25 @@ Joanna.sell('Pork')
 
 Alvin = Merchant ("Alvin", ["Human", "Alvin's Servitude", "Breaks", "Organs"])
 Alvin.sell("Human")
+
+
+
+class Teacher:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def create_dict(self):
+        x = {self.name : self.age}
+        return x
+Whalen = Teacher("Whalen", 35) 
+print(Whalen.create_dict())
+
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def create_dict(self):
+        x = {self.name : self.age}
+        return x
+Whalen = Teacher("Whalen", 35) 
+print(Whalen.create_dict())
