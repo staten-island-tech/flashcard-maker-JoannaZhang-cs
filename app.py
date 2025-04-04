@@ -63,11 +63,43 @@ phrases/words/images and the user will type the answer in the terminal.
 Keep a tally of correct answers and provide a score. Give students bonus
 points for “Streaks” */ """
 
+impor
+t json
 
+
+try:
+    with open("flash.json", "r") as file:
+        flash_data = json.load(file)
+except FileNotFoundError:
+        flash_data = []
+
+
+
+
+class flashcards:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
+
+    def display_info(self):
+        return f"{self.question} {self.answer}"
+    
+    def to_dict(self):
+        return {"question": self.question, "model": self.answer}
+    
+x = flashcards("Kublai", "Grandson of Genghis")
+#everything above is called "Class"
+flash_data.append(x.to_dict())
+with open("flash.json", "w") as file:
+    json.dump(flash_data, file, indent=4)
+#appending flashcard dictionary to list in json
+
+
+""" 
 
 class Teacher:
 
-print input("input a word/phrase:")
+print ("input a word/phrase:")
 
 flashcards = word("Toyota", "Camry", 2023, "camry_image.jpg")
 print(flashcards.display_info())  # Output: 2023 Toyota Camry
@@ -99,4 +131,4 @@ cars_data.append(new_car.to_dict())
 
 # Save updated data back to file
 with open("cars.json", "w") as file:
-    json.dump(cars_data, file, indent=4)
+    json.dump(cars_data, file, indent=4) """
