@@ -116,7 +116,26 @@ with open("flash.json", "w") as file:
     json.dump(flash_data, file, indent=4)
 
 
+class Teacher:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def create_dict(self):
+        x = {self.name : self.age}
+        return x
+Whalen = Teacher("Whalen", 35) 
+print(Whalen.create_dict())
 
+
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def create_dict(self):
+        x = {self.name : self.age}
+        return x
+Whalen = Teacher("Whalen", 35) 
+print(Whalen.create_dict())
 
 
 
