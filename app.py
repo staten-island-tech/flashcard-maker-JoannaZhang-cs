@@ -63,6 +63,15 @@ phrases/words/images and the user will type the answer in the terminal.
 Keep a tally of correct answers and provide a score. Give students bonus
 points for “Streaks” */ """
 
+
+
+
+
+
+
+
+
+
 import json
 
 
@@ -92,6 +101,49 @@ flash_data.append(x.to_dict())
 with open("flash.json", "w") as file:
     json.dump(flash_data, file, indent=4)
 #appending flashcard dictionary to list in json
+print(flashcards.display_info()) #?
+
+
+new_flashcard = flashcards("Ace", "Serve")
+try:
+    with open("flash.json", "r") as file:
+        flash_data = json.load(file)
+except FileNotFoundError:
+    flash_data = []
+
+flash_data.append(new_flashcard.to_dict())
+with open("flash.json", "w") as file:
+    json.dump(flash_data, file, indent=4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 """ 
