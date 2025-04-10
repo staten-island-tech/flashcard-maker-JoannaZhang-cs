@@ -63,8 +63,7 @@ phrases/words/images and the user will type the answer in the terminal.
 Keep a tally of correct answers and provide a score. Give students bonus
 points for “Streaks” */ """
 
-impor
-t json
+import json
 
 
 try:
