@@ -69,9 +69,6 @@ points for “Streaks” */ """
 
 
 
-
-
-
 import json
 
 
@@ -81,62 +78,44 @@ try:
 except FileNotFoundError:
         flash_data = []
 
+mode = input("What mode?").lower()
+
+if mode == "teacher":
+    class flashcards:
+        def __init__(self, question, answer):
+            self.question = question
+            self.answer = answer
+
+        def display_info(self):
+            return f"{self.question} {self.answer}"
+        
+        def to_dict(self):
+            return {"question": self.question, "answer": self.answer}
+        
+    while mode == "teacher":
+        x = flashcards("Kublai", "Grandson of Genghis")
+    #everything above is called "Class"
+        flash_data.append(x.to_dict())
+        with open("flash.json", "w") as file:
+            json.dump(flash_data, file, indent=4)
+    #appending flashcard dictionary to list in json
+        print(flashcards.display_info()) #?
 
 
+    new_flashcard = flashcards("Ace", "Serve")
+    try:
+        with open("flash.json", "r") as file:
+            flash_data = json.load(file)
+    except FileNotFoundError:
+        flash_data = []
 
-class flashcards:
-    def __init__(self, question, answer):
-        self.question = question
-        self.answer = answer
-
-    def display_info(self):
-        return f"{self.question} {self.answer}"
-    
-    def to_dict(self):
-        return {"question": self.question, "model": self.answer}
-    
-x = flashcards("Kublai", "Grandson of Genghis")
-#everything above is called "Class"
-flash_data.append(x.to_dict())
-with open("flash.json", "w") as file:
-    json.dump(flash_data, file, indent=4)
-#appending flashcard dictionary to list in json
-print(flashcards.display_info()) #?
+    flash_data.append(new_flashcard.to_dict())
+    with open("flash.json", "w") as file:
+        json.dump(flash_data, file, indent=4)
 
 
-new_flashcard = flashcards("Ace", "Serve")
-try:
-    with open("flash.json", "r") as file:
-        flash_data = json.load(file)
-except FileNotFoundError:
-    flash_data = []
-
-flash_data.append(new_flashcard.to_dict())
-with open("flash.json", "w") as file:
-    json.dump(flash_data, file, indent=4)
-
-
-class Teacher:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    def create_dict(self):
-        x = {self.name : self.age}
-        return x
-Whalen = Teacher("Whalen", 35) 
-print(Whalen.create_dict())
-
-
-class Student:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    def create_dict(self):
-        x = {self.name : self.age}
-        return x
-Whalen = Teacher("Whalen", 35) 
-print(Whalen.create_dict())
-
+elif mode == "student":
+    print("student")
 
 
 
