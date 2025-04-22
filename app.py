@@ -91,15 +91,20 @@ if mode == "teacher":
         
         def to_dict(self):
             return {"question": self.question, "answer": self.answer}
-        
+    #while loop to print out this flashcard on loop until student types answer?
+
+
+
     while mode == "teacher":
+        print ("What's the question?")
+        
         x = flashcards("Kublai", "Grandson of Genghis")
     #everything above is called "Class"
         flash_data.append(x.to_dict())
         with open("flash.json", "w") as file:
             json.dump(flash_data, file, indent=4)
     #appending flashcard dictionary to list in json
-        print(flashcards.display_info()) #?
+        print(flashcards.display_info()) 
 
 
     new_flashcard = flashcards("Ace", "Serve")
@@ -119,15 +124,8 @@ elif mode == "student":
 
 
 
-
-
-
-
-
-
-
-
-
+#just get it done
+#use classes for individual flashcards if necessary
 
 
 
