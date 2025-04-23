@@ -93,11 +93,14 @@ if mode == "teacher":
             return {"question": self.question, "answer": self.answer}
     #while loop to print out this flashcard on loop until student types answer?
 
-
-
+#ask question
+#ask answer
+#flashcard
+#append data to json
     while mode == "teacher":
         print ("What's the question?")
-        
+        print ("What's the answer?")
+
         x = flashcards("Kublai", "Grandson of Genghis")
     #everything above is called "Class"
         flash_data.append(x.to_dict())
@@ -107,20 +110,20 @@ if mode == "teacher":
         print(flashcards.display_info()) 
 
 
-    new_flashcard = flashcards("Ace", "Serve")
-    try:
-        with open("flash.json", "r") as file:
-            flash_data = json.load(file)
-    except FileNotFoundError:
-        flash_data = []
+        new_flashcard = flashcards("Ace", "Serve")
+        try:
+            with open("flash.json", "r") as file:
+                flash_data = json.load(file)
+        except FileNotFoundError:
+            flash_data = []
 
-    flash_data.append(new_flashcard.to_dict())
-    with open("flash.json", "w") as file:
-        json.dump(flash_data, file, indent=4)
+        flash_data.append(new_flashcard.to_dict())
+        with open("flash.json", "w") as file:
+            json.dump(flash_data, file, indent=4)
 
 
 elif mode == "student":
-    print("student")
+    print("What's the answer")
 
 
 
