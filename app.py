@@ -65,7 +65,8 @@ points for “Streaks” */ """
 
 
 
-
+score = 0
+streak = 0
 
 
 
@@ -80,52 +81,57 @@ except FileNotFoundError:
 
 mode = input("What mode?").lower()
 
-if mode == "teacher":
-    class flashcards:
-        def __init__(self, question, answer):
-            self.question = question
-            self.answer = answer
-
-        def display_info(self):
-            return f"{self.question} {self.answer}"
-        
-        def to_dict(self):
-            return {"question": self.question, "answer": self.answer}
     #while loop to print out this flashcard on loop until student types answer?
+class flashcards:
+    def __init__(self, question, answer):
+        self.question = question
+        self.answer = answer
+
+    def display_info(self):
+        return f"{self.question} {self.answer}"
+        
+    def to_dict(self):
+        return {"question": self.question, "answer": self.answer}
 
 #ask question
 #ask answer
 #flashcard
 #append data to json
-    while mode == "teacher":
-        print ("What's the question?")
-        print ("What's the answer?")
 
-        x = flashcards("Kublai", "Grandson of Genghis")
+while mode == "teacher":
+    x = flashcards("Kublai", "Grandson of Genghis")
     #everything above is called "Class"
-        flash_data.append(x.to_dict())
-        with open("flash.json", "w") as file:
-            json.dump(flash_data, file, indent=4)
+    flash_data.append(x.to_dict())
+    with open("flash.json", "w") as file:
+        json.dump(flash_data, file, indent=4)
     #appending flashcard dictionary to list in json
-        print(flashcards.display_info()) 
+    print (flashcards.display_info()) 
+    print (f"question: {question}, answer: {answer}")
 
 
-        new_flashcard = flashcards("Ace", "Serve")
-        try:
-            with open("flash.json", "r") as file:
-                flash_data = json.load(file)
-        except FileNotFoundError:
-            flash_data = []
 
-        flash_data.append(new_flashcard.to_dict())
-        with open("flash.json", "w") as file:
-            json.dump(flash_data, file, indent=4)
+while mode == "student":
+    import json
+    with open("flash.json", "w") as file:
+        json.dump(flash_data, file, indent=4)
+        print("Question:", flash_data["question"])
+        print("What is the answer?")
+        user_input = input(f"Question: {x['question']}\nYour answer: ")
 
+        if user_input.strip().lower() == x["answer"].lower():
+            print("Correct")
+            score = score + 1
+            streak = streak + 1
+        else:
+            print(f"Incorrect. The correct answer is: {x['answer']}")
+            score = score - 1
+            streak = streak - 1
 
-elif mode == "student":
-    print("What's the answer")
-
-
+    #reload question from json
+    #loop through questions
+    #ask question 
+    # input answer
+    # check answer
 
 #just get it done
 #use classes for individual flashcards if necessary
