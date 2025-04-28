@@ -1,6 +1,8 @@
 import json
 mode = input("What mode: ").lower() #teacher or student
 
+score = 0
+streak = 0
 
 class flashcards:
     def __init__(self, question, answer):
@@ -34,6 +36,7 @@ if mode == "teacher":
     print(new_card.display_info()) 
 
     print("Loaded flashcards:", flash_data)
+
 elif mode == "student":
     try:
         with open("flash.json", "r") as file:
@@ -53,9 +56,23 @@ elif mode == "student":
 
             if y.strip().lower() == card["answer"].strip().lower():
                 print(f"Correct! The answer is: {card['answer']}")
+                score += 1
+                streak += 1
+                print(f"streak: {streak}")
+                print(f"score: {score}")
+                z = input("continue? ")
+                if streak >= 3:
+                    points += 2
             else:
                 print(f"Wrong. The correct answer is: {card['answer']}")
-
+                streak = 0
+                print(f"score: {score}")
+                print(f"streak: {streak}")
+                z = input("continue? ")
+                if streak >= 3:
+                    score += 2
+  
+   
         z = input("Do you want to go through the flashcards again? (yes/no): ")
 
     print("ok bye!:)")
