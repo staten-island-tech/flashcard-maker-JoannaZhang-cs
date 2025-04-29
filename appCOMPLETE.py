@@ -62,7 +62,7 @@ elif mode == "student":
                 print(f"score: {score}")
                 z = input("continue? ")
                 if streak >= 3:
-                    points += 2
+                    score += 2
             else:
                 print(f"Wrong. The correct answer is: {card['answer']}")
                 streak = 0
